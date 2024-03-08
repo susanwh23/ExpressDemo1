@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1= title
-  form(action='/participants', method='GET')
+  form(action='/getParticipants', method='GET')
     label(for='meetingId') Meeting ID:
     input(type='text', id='meetingId', name='meetingId')
     label(for='password') Password:

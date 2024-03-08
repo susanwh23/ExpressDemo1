@@ -11,6 +11,9 @@
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "@zoom/meetingsdk": "^3.1.6",
+    "@zoom/appssdk": "^0.16.8",
+    "axios": "^1.6.2"
   }
 }
