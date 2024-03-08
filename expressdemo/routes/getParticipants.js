@@ -7,15 +7,15 @@ var jwt = require('jsonwebtoken');
 // 定义Zoom API的基本URL和认证信息
 const baseUrl = 'https://api.zoom.us/v2';
 //const zoomToken = 'YOUR_ZOOM_API_TOKEN';MZr0OfgITFOzVrlf_30lQg
-const apiKey = 'OsnJQFhURo2zOH3ettr1EA';
-const apiSecret = 'ecRkinAbmE4ZZrwySsx6DzyiO4WBVTya';
+const zoomApiKey = 'OsnJQFhURo2zOH3ettr1EA';
+const zoomApiSecret = 'ecRkinAbmE4ZZrwySsx6DzyiO4WBVTya';
 
 const payload = {
-  iss: apiKey,
+  iss: zoomApiKey,
   exp: ((new Date()).getTime() + 5000)
 };
 
-const zoomToken = jwt.sign(payload, apiSecret);
+const zoomToken = jwt.sign(payload, zoomApiSecret);
 
 console.log(zoomToken);
 
@@ -25,8 +25,7 @@ router.get('/', async (req, res) => {
     try {
         const { meetingId, password } = req.query;
 
-        
-        const zoomMeetingParticipants = await axios.get(`${baseUrl}/past_meeting/${meetingId}`, {
+        const zoomMeetingParticipants = await axios.get(`${baseUrl}/past_meetings/${meetingId}`, {
            headers: {
               Authorization: `Bearer ${zoomToken}`
             }
