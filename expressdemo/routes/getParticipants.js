@@ -26,14 +26,14 @@ router.get('/', async (req, res) => {
         const { meetingId, password } = req.query;
 
         
-        const zoomMeetingParticipants = await axios.get(`${baseUrl}/meeting/${meetingId}/participants`, {
+        const zoomMeetingParticipants = await axios.get(`${baseUrl}/past_meeting/${meetingId}`, {
            headers: {
               Authorization: `Bearer ${zoomToken}`
             }
         });
 
         // 将 Zoom meeting 参会者信息传递给 EJS 模板
-        res.render('participants', { participants: zoomMeetingParticipants.data });
+        res.render('participants', { user_name: zoomMeetingParticipants.data });
     } catch (error) {
         console.error('Error fetching Zoom meeting participants:', error);
         res.status(500).send('Error fetching Zoom meeting participants');
